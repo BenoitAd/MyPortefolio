@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  nextjs:
+    build: .
+    container_name: nextjs_app
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nextjs.rule=Host(`https://portfolio.benoit-auger-dubois.com)"
+      - "traefik.http.routers.nextjs.entrypoints=websecure"
+      - "traefik.http.routers.nextjs.tls.certresolver=letsencrypt"
+      - "traefik.http.services.nextjs.loadbalancer.server.port=3000"
+    networks:
+      - traefik_public
+
+networks:
+  traefik_public:
+    external: true
