@@ -7,15 +7,17 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
+    networks:
+      - traefik_web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.nextjs.rule=Host(`https://portfolio.benoit-auger-dubois.com)"
+      - "traefik.http.routers.nextjs.rule=Host(`portfolio.${DOMAIN}`)"
       - "traefik.http.routers.nextjs.entrypoints=websecure"
-      - "traefik.http.routers.nextjs.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.nextjs.tls.certresolver=myresolver"
       - "traefik.http.services.nextjs.loadbalancer.server.port=3000"
-    networks:
-      - traefik_public
+      - "traefik.docker.network=traefik_web"
 
 networks:
-  traefik_public:
+  traefik_web:
     external: true
+    name: traefik_web
