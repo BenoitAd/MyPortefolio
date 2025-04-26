@@ -57,7 +57,6 @@ RUN npm ci --only=production
 # Notez les slashes '/' à la fin des destinations pour indiquer explicitement des répertoires
 COPY --from=builder /app/.next ./.next/
 COPY --from=builder /app/public ./public/
-COPY --from=builder /app/next.config.js ./ # Fichier de configuration Next.js
 
 # (Optionnel mais Fortement Recommandé) Exécuter en tant qu'utilisateur non-root
 # Crée un utilisateur et un groupe système dédiés

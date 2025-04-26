@@ -10,7 +10,8 @@ const Header = () => (
         href="/"
         style={{ display: 'flex', alignItems: 'center', color: "white" }}>
 
-        <img src="/logo.png" height={50} width={50} /> <span style={{ marginLeft: 10, marginTop: 7, fontSize: 20 }} >Auger-Dubois Benoit</span>
+        <img src="/logo.png" height={50} width={50} /> 
+        <span style={{ marginLeft: 10, marginTop: 7, fontSize: 20 }} >Benoit AD</span>
 
       </Link>
     </Div1>
